@@ -4,4 +4,8 @@ public class Calculatrice {
         return result;
     }
     private int result ;
+
+    public String getState() {
+        return "test valid" ;
+    }
 }
