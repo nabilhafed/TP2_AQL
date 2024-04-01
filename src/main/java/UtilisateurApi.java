@@ -1,5 +1,6 @@
 public interface UtilisateurApi {
-       default boolean creerUtilisateur(Utilisateur utilisateur) {
-        return true ;
-    }
+    // Définition d'un ID fictif
+       int idUtilisateur = 123 ;
+      boolean creerUtilisateur(Utilisateur utilisateur) ;
+      int getIdUtilisateur();
 }

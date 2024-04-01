@@ -31,5 +31,7 @@ public class UserServiceTest {
 // TODO : Vérification de l'appel à l'API
 // ...
         Assertions.assertTrue(userService.creerUtilisateur(utilisateur));
+
+
     }
 }
