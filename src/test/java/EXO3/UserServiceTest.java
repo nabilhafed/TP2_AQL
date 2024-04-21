@@ -21,7 +21,7 @@ public class UserServiceTest {
     public void testCreationUtilisateur_EchecCreation_Exception() throws ServiceException {
         // Scénario : Lever une exception lors de la création de l'utilisateur
         Utilisateur utilisateur = new Utilisateur("Jean", "Dupont", "jeandupont@email.com");
-        when(utilisateurApiMock.creerUtilisateur(utilisateur)).thenThrow(new ServiceException());
+        when(utilisateurApiMock.creerUtilisateur(utilisateur)).thenReturn(false);
 
         UserService userService = new UserService(utilisateurApiMock);
 
@@ -47,7 +47,7 @@ public class UserServiceTest {
 
         // Vérification que la méthode creerUtilisateur a été appelée avec l'utilisateur invalide
         verify(utilisateurApiMock).creerUtilisateur(utilisateur);
-        // Vérification qu'aucune autre méthode n'a été appelée sur l'objet utilisateurApiMock
+        // Vérification qu'aucune autre méthode n'a été appelée sur l'objet utilisateurApiMock////
         verifyNoMoreInteractions(utilisateurApiMock);
     }
 
