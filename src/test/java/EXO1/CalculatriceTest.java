@@ -1,3 +1,6 @@
+package EXO1;
+
+import EXO1.Calculatrice;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

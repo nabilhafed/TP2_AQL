@@ -1,4 +1,9 @@
-import org.junit.Assert;
+package EXO2;
+
+import EXO2.ServiceException;
+import EXO2.UserService;
+import EXO2.Utilisateur;
+import EXO2.UtilisateurApi;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;

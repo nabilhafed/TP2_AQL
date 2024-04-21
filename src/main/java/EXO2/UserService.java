@@ -1,3 +1,5 @@
+package EXO2;
+
 public class UserService {
     private final UtilisateurApi utilisateurApi;
     public UserService(UtilisateurApi utilisateurApi) {
@@ -5,7 +7,7 @@ public class UserService {
     }
     public boolean creerUtilisateur(Utilisateur utilisateur) throws
             ServiceException {
-       boolean result =  utilisateurApi.creerUtilisateur(utilisateur);
+       boolean result =  this.utilisateurApi.creerUtilisateur(utilisateur);
         return true;
     }
 }

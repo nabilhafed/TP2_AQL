@@ -1,3 +1,5 @@
+package EXO2;
+
 public class Utilisateur {
     public String UserName ;
     public String UserFamilyName ;
