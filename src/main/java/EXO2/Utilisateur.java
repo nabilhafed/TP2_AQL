@@ -10,4 +10,16 @@ public class Utilisateur {
         UserFamilyName = userFamilyName;
         Email = email;
     }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public String getUserFamilyName() {
+        return UserFamilyName;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
 }

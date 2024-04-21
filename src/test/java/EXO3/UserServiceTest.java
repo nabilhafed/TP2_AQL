@@ -6,6 +6,8 @@ import EXO2.Utilisateur;
 import EXO2.UtilisateurApi;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -17,6 +19,8 @@ public class UserServiceTest {
     @Mock
     private UtilisateurApi utilisateurApiMock;
 
+    @Captor
+    private ArgumentCaptor<Utilisateur> argumentCaptor;
     @Test
     public void testCreationUtilisateur_EchecCreation_Exception() throws ServiceException {
         // Scénario : Lever une exception lors de la création de l'utilisateur
@@ -70,5 +74,24 @@ public class UserServiceTest {
         // Vérification de l'ID de l'utilisateur
         int idUtilisateurRetourne = utilisateurApiMock.recupererIdUtilisateur(utilisateur);
         assertEquals(idUtilisateur, idUtilisateurRetourne);
+    }
+    @Test
+    public void testCreationUtilisateur_ArgumentsCaptures() throws ServiceException {
+        // Création d'un utilisateur
+        Utilisateur utilisateur = new Utilisateur("Jean", "Dupont", "jeandupont@email.com");
+
+        // Capturer les arguments passés à la méthode creerUtilisateur du mock
+        when(utilisateurApiMock.creerUtilisateur(any(Utilisateur.class))).thenReturn(true);
+        UserService userService = new UserService(utilisateurApiMock);
+        userService.creerUtilisateur(utilisateur);
+        verify(utilisateurApiMock).creerUtilisateur(argumentCaptor.capture());
+
+        // Obtenir l'utilisateur capturé
+        Utilisateur utilisateurCapture = argumentCaptor.getValue();
+
+        // Vérification des arguments capturés en utilisant les getters de l'objet utilisateurCapture
+        assertEquals(utilisateur.getUserName(), utilisateurCapture.getUserName());
+        assertEquals(utilisateur.getUserFamilyName(), utilisateurCapture.getUserFamilyName());
+        assertEquals(utilisateur.getEmail(), utilisateurCapture.getEmail());
     }
 }
